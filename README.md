@@ -20,6 +20,7 @@
 
 ---
 
+
 ### Contact
 You can contact the core developers of Strato at our **[Discord](https://discord.gg/YhpdhVBmXX)**. If you have any questions, feel free to ask. It's also a good place to just keep up with the emulator, as most talk regarding development goes on over there.
 
