@@ -96,20 +96,12 @@ namespace skyline::service::fssrv {
     }
 
     Result IFileSystem::GetFreeSpaceSize(type::KSession &session, ipc::IpcRequest &request, ipc::IpcResponse &response) {
-        struct statvfs data;
-        if (fstatvfs(NULL, &data) < 0)
-          response.Push<u64>(90000000);
-        else
-          response.Push<u64>(data.f_bsize * data.f_bavail);
+        response.Push<u64>(90000000);
         return {};
     }
 
     Result IFileSystem::GetTotalSpaceSize(type::KSession &session, ipc::IpcRequest &request, ipc::IpcResponse &response) {
-        struct statvfs data;
-        if (fstatvfs(NULL, &data) < 0)
-          response.Push<u64>(90000000);
-        else
-          response.Push<u64>(data.f_bsize * data.f_bfree);
+        response.Push<u64>(90000000);
         return {};
     }
 
