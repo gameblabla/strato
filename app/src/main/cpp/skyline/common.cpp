@@ -15,6 +15,8 @@
 #include "hle/nnvk/logging.h"
 #include "kernel/types/KProcess.h"
 
+extern void *adrenotools_open_libvulkan(int dlopenMode, int featureFlags, const char *tmpLibDir, const char *hookLibDir, const char *customDriverDir, const char *customDriverName, const char *fileRedirectDir, void **userMappingHandle);
+
 namespace nnvk {
     static skyline::Logger::LogLevel ConvertLogLevel(Logger::LogLevel level) {
         switch (level) {
