@@ -122,4 +122,8 @@ namespace skyline::service::nfp {
    Result IUser::RecreateApplicationArea(type::KSession &session, ipc::IpcRequest &request, ipc::IpcResponse &response) {
         return {};
     }
+    
+    Result IUser::SetApplicationArea(type::KSession &session, ipc::IpcRequest &request, ipc::IpcResponse &response) {
+        return {};
+    }
 }
