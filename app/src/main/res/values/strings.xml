@@ -298,4 +298,5 @@
     <string name="save_file_invalid_zip_structure">Invalid Zip directory structure: the first subfolder name must be the Title ID of the game.</string>
     <string name="game_crash">The game has crashed</string>
     <string name="game_crash_message">A fatal error occurred. Check the log for details.</string>
+    <string name="failed_open_directory">Failed to open directory</string>
 </resources>
