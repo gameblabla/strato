@@ -27,7 +27,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
-import emu.skyline.adapter.*
+import emu.skyline.adapter.AppViewItem
+import emu.skyline.adapter.GenericAdapter
+import emu.skyline.adapter.GridSpacingItemDecoration
+import emu.skyline.adapter.LayoutType
 import emu.skyline.data.AppItem
 import emu.skyline.data.AppItemTag
 import emu.skyline.databinding.MainActivityBinding
@@ -152,7 +155,6 @@ class MainActivity : AppCompatActivity() {
             while (itemDecorationCount > 0) removeItemDecorationAt(0)
             when (layoutType) {
                 LayoutType.List -> Unit
-
                 LayoutType.Grid, LayoutType.GridCompact -> addItemDecoration(GridSpacingItemDecoration(resources.getDimensionPixelSize(R.dimen.grid_padding)))
             }
         }
