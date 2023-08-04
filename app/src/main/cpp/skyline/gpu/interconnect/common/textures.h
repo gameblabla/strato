@@ -33,24 +33,24 @@ namespace skyline::gpu::interconnect {
 
     class Textures {
       private:
-        std::shared_ptr<TextureView> nullTextureView{};
+        HostTextureView *nullTextureView{};
         dirty::ManualDirtyState<TexturePoolState> texturePool;
 
-        tsl::robin_map<TextureImageControl, std::shared_ptr<TextureView>, util::ObjectHash<TextureImageControl>> textureHeaderStore;
+        tsl::robin_map<TextureImageControl, HostTextureView *, util::ObjectHash<TextureImageControl>> textureHeaderStore;
 
         struct CacheEntry {
             TextureImageControl tic;
-            TextureView *view;
+            HostTextureView *view;
             u64 sequenceNumber;
         };
-        std::vector<CacheEntry> textureHeaderCache;
+        std::map<u32, CacheEntry> textureHeaderCache;
 
       public:
         Textures(DirtyManager &manager, const TexturePoolState::EngineRegisters &engine);
 
         void MarkAllDirty();
 
-        TextureView *GetTexture(InterconnectContext &ctx, u32 index, Shader::TextureType shaderType);
+        HostTextureView *GetTexture(InterconnectContext &ctx, u32 index, Shader::TextureType shaderType);
 
         Shader::TextureType GetTextureType(InterconnectContext &ctx, u32 index);
     };
