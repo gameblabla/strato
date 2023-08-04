@@ -46,11 +46,7 @@ namespace skyline::service::nfp {
     }
 
     Result IUser::GetApplicationArea(type::KSession &session, ipc::IpcRequest &request, ipc::IpcResponse &response) {
-        response.Push<u32>(0);
-        return {};
-    }
-
-    Result IUser::SetApplicationArea(type::KSession &session, ipc::IpcRequest &request, ipc::IpcResponse &response) {
+        response.Push<u32>(0xD8); // 216 bytes
         return {};
     }
 
@@ -111,11 +107,6 @@ namespace skyline::service::nfp {
         return {};
     }
 
-    Result IUser::GetApplicationAreaSize(type::KSession &session, ipc::IpcRequest &request, ipc::IpcResponse &response) {
-        response.Push<u32>(0);
-        return {};
-    }
-
     Result IUser::AttachAvailabilityChangeEvent(type::KSession &session, ipc::IpcRequest &request, ipc::IpcResponse &response) {
         auto handle{state.process->InsertItem(attachAvailabilityChangeEvent)};
         Logger::Debug("Attach Availability Change Event Handle: 0x{:X}", handle);
@@ -125,10 +116,6 @@ namespace skyline::service::nfp {
     }
     
    Result IUser::RecreateApplicationArea(type::KSession &session, ipc::IpcRequest &request, ipc::IpcResponse &response) {
-        return {};
-    }
-
-    Result IUser::RecreateApplicationArea(type::KSession &session, ipc::IpcRequest &request, ipc::IpcResponse &response) {
         return {};
     }
 }
