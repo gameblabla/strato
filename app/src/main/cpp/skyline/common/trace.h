@@ -4,9 +4,13 @@
 #include <perfetto.h>
 #include <common.h>
 
+#ifdef NDEBUG
+#define TRACE_EVENT_FMT(category, formatString, ...)
+#else
 #define TRACE_EVENT_FMT(category, formatString, ...) TRACE_EVENT(category, nullptr, [&](perfetto::EventContext ctx) { \
     ctx.event()->set_name(skyline::util::Format(formatString, __VA_ARGS__));                                          \
 })
+#endif
 
 PERFETTO_DEFINE_CATEGORIES(
     perfetto::Category("scheduler").SetDescription("Events from the HLE scheduler"),

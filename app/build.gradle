@@ -75,7 +75,7 @@ android {
 
     buildTypes {
         release {
-            debuggable true
+            debuggable false
             externalNativeBuild {
                 cmake {
                     arguments "-DCMAKE_BUILD_TYPE=RELEASE"

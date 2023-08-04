@@ -10,7 +10,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED TRUE)
 
 set(source_DIR ${CMAKE_SOURCE_DIR}/src/main/cpp)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-strict-aliasing -Wno-unused-command-line-argument -fwrapv")
-set(CMAKE_CXX_FLAGS_RELEASE "-Ofast -flto=full -fno-stack-protector -DNDEBUG")
+set(CMAKE_CXX_FLAGS_RELEASE "-Ofast -flto=full -fno-stack-protector -fno-stack-check -DNDEBUG -fipa-pta -march=armv8.2-a+fp16+dotprod -mtune=cortex-a76.cortex-a55 -ffunction-sections -fdata-sections -Wl,--gc-sections -Wl,--as-needed")
 
 # Build all libraries with -Ofast but with default debug data (-g) for debug and reldebug builds
 set(CMAKE_CXX_FLAGS_DEBUG "-Ofast")
