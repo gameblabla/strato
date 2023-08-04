@@ -2,6 +2,7 @@
 // Copyright © 2020 Skyline Team and Contributors (https://github.com/skyline-emu/)
 
 #include <sys/stat.h>
+#include <sys/statvfs.h>
 #include <os.h>
 #include "results.h"
 #include "IFile.h"
@@ -95,13 +96,21 @@ namespace skyline::service::fssrv {
     }
 
     Result IFileSystem::GetFreeSpaceSize(type::KSession &session, ipc::IpcRequest &request, ipc::IpcResponse &response) {
-        //TODO: proper implementation for GetFreeSpaceSize
+        struct statvfs data;
         response.Push<u64>(90000000);
+        if (fstatvfs(NULL, &data) < 0)
+          response.Push<u64>(90000000);
+        else
+          response.Push<u64>(data.f_bsize * data.f_bavail);
         return {};
     }
 
     Result IFileSystem::GetTotalSpaceSize(type::KSession &session, ipc::IpcRequest &request, ipc::IpcResponse &response) {
-        response.Push<u64>(90000000);
+        struct statvfs data;
+        if (fstatvfs(NULL, &data) < 0)
+          response.Push<u64>(90000000);
+        else
+          response.Push<u64>(data.f_bsize * data.f_bfree);
         return {};
     }
 
