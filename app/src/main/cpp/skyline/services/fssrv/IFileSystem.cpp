@@ -2,6 +2,7 @@
 // Copyright © 2020 Skyline Team and Contributors (https://github.com/skyline-emu/)
 
 #include <sys/stat.h>
+#include <sys/statvfs.h>
 #include <os.h>
 #include "results.h"
 #include "IFile.h"
