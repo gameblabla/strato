@@ -740,10 +740,12 @@ class EmulationActivity : AppCompatActivity(), SurfaceHolder.Callback, View.OnTo
         return dialog.waitForSubmitOrCancel().let { arrayOf(if (it.cancelled) 1 else 0, it.text) }
     }
 
-    @Suppress("unused")
+    @Suppress("deprecation")
     fun getDhcpInfo() : DhcpInfo {
-        val wifiManager = applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
+		return with (applicationContext.getSystemService(Context.WIFI_SERVICE) as WifiManager) {
         return wifiManager.dhcpInfo
+            dhcpInfo
+        }
     }
 
     @Suppress("unused")
